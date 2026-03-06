@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">WeatherApp</string>
+    <string name="cur_temp">%.1f°</string>
+    <string name="max_temp">Max: %.1f°</string>
+    <string name="min_temp">Min: %.1f°</string>
+    <string name="hour_temp">%.1f°C</string>
+    <string name="hour_time">%d:00</string>
 </resources>
