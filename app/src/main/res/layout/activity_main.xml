@@ -28,7 +28,6 @@
             android:layout_marginTop="200dp"
             android:textColor="@color/white"
             android:textSize="64sp"
-            android:text="@string/cur_temp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
