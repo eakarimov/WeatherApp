@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".presentation.MainActivity"
     android:background="@drawable/shape_app_background"
     tools:ignore="ContentDescription">
 
@@ -49,7 +49,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:textSize="24sp"
-                tools:text="Current condition"/>
+                tools:text="Солнечно"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -62,7 +62,7 @@
                     android:textColor="@color/white"
                     android:textSize="24sp"
                     android:layout_marginEnd="20dp"
-                    tools:text="Max: 25°"/>
+                    tools:text="Mакс: 25°"/>
 
                 <TextView
                     android:id="@+id/tvMinTemp"
@@ -70,7 +70,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
                     android:textSize="24sp"
-                    tools:text="Min: 15°"/>
+                    tools:text="Мин: 15°"/>
             </LinearLayout>
 
 
@@ -95,7 +95,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Today"
+                    android:text="@string/today"
                     android:textSize="20sp"
                     android:textColor="@color/white"
                     android:layout_gravity="start"
@@ -108,7 +108,7 @@
                     android:layout_gravity="end"
                     android:textSize="20sp"
                     android:textColor="@color/white"
-                    tools:text="Mar, 6"/>
+                    tools:text="Март, 6"/>
             </LinearLayout>
 
             <com.google.android.material.divider.MaterialDivider
@@ -270,4 +270,15 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tvError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:textColor="@color/white"
+        android:visibility="gone"
+    />
 </FrameLayout>
