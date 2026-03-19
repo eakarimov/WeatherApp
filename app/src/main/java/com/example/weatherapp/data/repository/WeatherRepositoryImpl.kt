@@ -1,0 +1,24 @@
+package com.example.weatherapp.data.repository
+
+import com.example.weatherapp.data.remote.WeatherApi
+import com.example.weatherapp.data.remote.dto.toWeather
+import com.example.weatherapp.domain.model.Weather
+import com.example.weatherapp.domain.repository.WeatherRepository
+import retrofit2.HttpException
+import java.io.IOException
+
+class WeatherRepositoryImpl(
+    private val api: WeatherApi
+) : WeatherRepository {
+
+    override suspend fun getWeather(): Weather {
+
+       try {
+           return api.getWeather().toWeather()
+        } catch (e: IOException) {
+            throw IOException(e.message)
+        } catch (e: HttpException) {
+            throw (HttpException(e.response()))
+        }
+    }
+}
