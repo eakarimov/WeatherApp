@@ -2,6 +2,7 @@ package com.example.weatherapp.data.repository
 
 import com.example.weatherapp.data.remote.WeatherApi
 import com.example.weatherapp.data.remote.dto.toWeather
+import com.example.weatherapp.domain.error.AppException
 import com.example.weatherapp.domain.model.Weather
 import com.example.weatherapp.domain.repository.WeatherRepository
 import retrofit2.HttpException
@@ -16,9 +17,11 @@ class WeatherRepositoryImpl(
        try {
            return api.getWeather().toWeather()
         } catch (e: IOException) {
-            throw IOException(e.message)
+            throw AppException.Network()
         } catch (e: HttpException) {
-            throw (HttpException(e.response()))
+            throw AppException.Server()
+        } catch (e: Exception) {
+            throw AppException.Unknown()
         }
     }
 }

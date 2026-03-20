@@ -2,13 +2,14 @@ package com.example.weatherapp.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.weatherapp.common.Resource
+import com.example.weatherapp.domain.error.AppException
 import com.example.weatherapp.domain.usecase.GetWeatherUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.onStart
 
 class WeatherViewModel(
     private val getWeatherUseCase: GetWeatherUseCase,
@@ -22,20 +23,20 @@ class WeatherViewModel(
     }
 
     private fun getWeather() {
-        getWeatherUseCase().onEach { result ->
-            when (result) {
-                is Resource.Success -> {
-                    _state.value = WeatherState(weather = result.data)
+        getWeatherUseCase().onStart {
+            _state.value = WeatherState(isLoading = true)
+        }.onEach { weather ->
+            _state.value = WeatherState(weather = weather)
+        }.catch { e ->
+            val appError = e as? AppException ?: AppException.Unknown()
+
+            _state.value = WeatherState(
+                error = when (appError) {
+                    is AppException.Network -> "Проверьте подключение к Интернету."
+                    is AppException.Server -> "Произошла ошибка на сервере."
+                    is AppException.Unknown -> "Произошла непредвиденная ошибка."
                 }
-                is Resource.Error -> {
-                    _state.value = WeatherState(
-                        error = result.message ?: "Произошла непредвиденная ошибка."
-                    )
-                }
-                is Resource.Loading -> {
-                    _state.value = WeatherState(isLoading = true)
-                }
-            }
+            )
         }.launchIn(viewModelScope)
     }
 }

@@ -17,7 +17,6 @@ import com.example.weatherapp.domain.usecase.GetWeatherUseCase
 import com.example.weatherapp.domain.model.Weather
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
-import java.time.format.DateTimeFormatter
 import java.util.Date
 import java.util.Locale
 import kotlin.collections.forEachIndexed
