@@ -10,22 +10,20 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import coil3.load
 import com.example.weatherapp.R
-import com.example.weatherapp.data.remote.RetrofitInstance
-import com.example.weatherapp.data.repository.WeatherRepositoryImpl
 import com.example.weatherapp.databinding.ActivityMainBinding
-import com.example.weatherapp.domain.usecase.GetWeatherUseCase
+import com.example.weatherapp.domain.error.AppException
 import com.example.weatherapp.domain.model.Weather
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 import kotlin.collections.forEachIndexed
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private val repository = WeatherRepositoryImpl(RetrofitInstance.api)
-    private val getWeatherUseCase = GetWeatherUseCase(repository)
-    private val viewModel: WeatherViewModel by viewModels { WeatherViewModelFactory(getWeatherUseCase) }
+    private val viewModel: WeatherViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,22 +43,35 @@ class MainActivity : AppCompatActivity() {
     private fun observeData() {
         lifecycleScope.launch {
             viewModel.state.collect {state ->
-                state.weather?.let {
-                    setupWeather(state.weather)
-                    binding.progressBar.isVisible = false
-                    binding.mainLayout.isVisible = true
-                }
-                if (state.isLoading) {
-                    binding.progressBar.isVisible = true
-                    binding.mainLayout.isVisible = false
-                }
-                if (state.error.isNotEmpty()) {
-                    binding.progressBar.isVisible = false
-                    binding.tvError.text = state.error
-                    binding.tvError.isVisible = true
+                with (binding) {
+                    when {
+                        state.isLoading -> {
+                            progressBar.isVisible = true
+                            mainLayout.isVisible = false
+                            tvError.isVisible = false
+                        }
+                        state.error != null -> {
+                            progressBar.isVisible = false
+                            mainLayout.isVisible = false
+                            tvError.text = mapError(state.error)
+                            tvError.isVisible = true
+                        }
+                        state.weather != null -> {
+                            setupWeather(state.weather)
+                            progressBar.isVisible = false
+                            mainLayout.isVisible = true
+                            tvError.isVisible = false
+                        }
+                    }
                 }
             }
         }
+    }
+
+    private fun mapError(error: AppException): String = when (error) {
+        is AppException.Network -> getString(R.string.error_network)
+        is AppException.Server -> getString(R.string.error_server)
+        is AppException.Unknown -> getString(R.string.error_unknown)
     }
 
     private fun setupWeather(weather: Weather) {

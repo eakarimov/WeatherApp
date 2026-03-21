@@ -5,4 +5,7 @@
     <string name="min_temp">Мин: %.1f°</string>
     <string name="hour_temp">%.1f°C</string>
     <string name="today">Сегодня</string>
+    <string name="error_network">Проверьте подключение к Интернету.</string>
+    <string name="error_server">Произошла ошибка на сервере.</string>
+    <string name="error_unknown">Произошла непредвиденная ошибка.</string>
 </resources>

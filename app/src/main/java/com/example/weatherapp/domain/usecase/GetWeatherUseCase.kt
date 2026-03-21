@@ -4,8 +4,9 @@ import com.example.weatherapp.domain.repository.WeatherRepository
 import com.example.weatherapp.domain.model.Weather
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 
-class GetWeatherUseCase(
+class GetWeatherUseCase @Inject constructor(
     private val weatherRepository: WeatherRepository
 ) {
     operator fun invoke(): Flow<Weather> = flow {
