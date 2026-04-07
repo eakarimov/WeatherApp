@@ -7,6 +7,7 @@ import com.example.weatherapp.domain.usecase.GetWeatherUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -18,8 +19,8 @@ class WeatherViewModel @Inject constructor(
     private val getWeatherUseCase: GetWeatherUseCase,
 ): ViewModel() {
 
-    private val _state = MutableStateFlow(WeatherState())
-    val state: StateFlow<WeatherState> = _state
+    private val _state = MutableStateFlow(WeatherState(isLoading = true))
+    val state: StateFlow<WeatherState> = _state.asStateFlow()
 
     init {
         getWeather()

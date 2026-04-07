@@ -1,0 +1,41 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="72dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingHorizontal="8dp"
+    android:paddingVertical="12dp"
+    tools:background="@color/blue">
+
+    <TextView
+        android:id="@+id/tvHour"
+        style="@style/TextAppearance.AppCompat.BaseText.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="10:00"/>
+
+    <ImageView
+        android:id="@+id/ivIcon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="6dp"
+        app:tint="@color/white"
+        tools:ignore="ContentDescription"/>
+
+    <TextView
+        android:id="@+id/tvTemp"
+        style="@style/TextAppearance.AppCompat.BaseText.RegularSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        tools:text="20°/24°"/>
+
+    <TextView
+        android:id="@+id/tvChanceOfRain"
+        style="@style/TextAppearance.AppCompat.BaseText.RegularSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="74% rain"/>
+</LinearLayout>

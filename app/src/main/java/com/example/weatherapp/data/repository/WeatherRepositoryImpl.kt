@@ -15,8 +15,8 @@ class WeatherRepositoryImpl @Inject constructor(
 
     override suspend fun getWeather(): Weather {
 
-       try {
-           return api.getWeather().toWeather()
+        try {
+            return api.getWeather().toWeather()
         } catch (e: IOException) {
             throw AppException.Network()
         } catch (e: HttpException) {

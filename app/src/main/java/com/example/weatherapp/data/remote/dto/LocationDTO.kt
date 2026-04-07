@@ -3,7 +3,7 @@ package com.example.weatherapp.data.remote.dto
 
 import com.google.gson.annotations.SerializedName
 
-data class Location(
+data class LocationDTO(
     @SerializedName("country")
     val country: String,
     @SerializedName("lat")
