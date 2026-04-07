@@ -12,11 +12,18 @@ class GetWeatherUseCase @Inject constructor(
     operator fun invoke(): Flow<Weather> = flow {
 
         val weather = weatherRepository.getWeather()
-        emit(Weather(
-            current = weather.current,
-            byHours = weather.byHours
-                .filter { it.timestamp >= weather.current.timestamp }
-                .take(4)
-        ))
+        emit(weather.copy(
+            hourly = weather.hourly
+                .drop(weather.location.currentHour)
+                .take(24 )
+                .mapIndexed { index, hourlyWeather ->
+                    if (index == 0) {
+                        hourlyWeather.copy(hourText = "Now")
+                    } else {
+                        hourlyWeather
+                    }
+                }
+            )
+        )
     }
 }

@@ -1,0 +1,58 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    tools:background="@color/blue"
+    android:gravity="center_vertical"
+    android:paddingHorizontal="8dp">
+
+    <TextView
+        android:id="@+id/tvDayOfWeek"
+        style="@style/TextAppearance.AppCompat.BaseText.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Sun" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:id="@+id/ivIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="8dp"
+            app:tint="@color/white"
+            tools:ignore="ContentDescription"
+            tools:src="@drawable/ic_chance_of_rain" />
+
+        <TextView
+            android:id="@+id/tvChanceOfRain"
+            style="@style/TextAppearance.AppCompat.BaseText.RegularSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="74% rain" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvTemp"
+        style="@style/TextAppearance.AppCompat.BaseText.RegularSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="20°/24°" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

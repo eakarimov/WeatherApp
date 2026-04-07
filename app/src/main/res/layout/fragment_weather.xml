@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/weatherFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        tools:ignore="ContentDescription">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="30dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="0dp"
+                app:cardBackgroundColor="@color/blue"
+                android:layout_margin="16dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    app:layout_constraintEnd_toEndOf="@+id/linearLayout6"
+                    app:layout_constraintStart_toEndOf="@+id/linearLayout6">
+
+                    <ImageButton
+                        android:id="@+id/btnAdd"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_plus"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvCity"
+                        style="@style/TextAppearance.AppCompat.BaseText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="Набережные Челны"
+                        android:paddingVertical="4dp"/>
+
+                    <ImageButton
+                        android:id="@+id/btnMenu"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_more_vert"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/ivCurCond"
+                        android:layout_width="240dp"
+                        android:layout_height="240dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvCity"
+                        tools:src="@mipmap/ic_launcher"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:id="@+id/tvDayOfWeek"
+                        style="@style/TextAppearance.AppCompat.BaseText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="11dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/dividerVertical"
+                        app:layout_constraintEnd_toStartOf="@id/dividerVertical"
+                        app:layout_constraintTop_toTopOf="@+id/dividerVertical"
+                        tools:text="Sunday" />
+
+                    <View
+                        android:id="@+id/dividerVertical"
+                        android:layout_width="2dp"
+                        android:layout_height="19dp"
+                        android:background="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ivCurCond" />
+
+                    <TextView
+                        android:id="@+id/tvDate"
+                        style="@style/TextAppearance.AppCompat.BaseText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="11dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/dividerVertical"
+                        app:layout_constraintStart_toEndOf="@id/dividerVertical"
+                        app:layout_constraintTop_toTopOf="@+id/dividerVertical"
+                        tools:text="Nov 14" />
+
+                    <TextView
+                        android:id="@+id/tvCurTemp"
+                        style="@style/TextAppearance.AppCompat.BaseText.SemiBold"
+                        android:textSize="72sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="97dp"
+                        android:layout_marginTop="16dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/dividerVertical"
+                        tools:text="24" />
+
+                    <ImageView
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_marginTop="20dp"
+                        android:src="@drawable/ic_degree"
+                        app:layout_constraintStart_toEndOf="@+id/tvCurTemp"
+                        app:layout_constraintTop_toTopOf="@+id/tvCurTemp" />
+
+                    <TextView
+                        style="@style/TextAppearance.AppCompat.BaseText"
+                        android:id="@+id/tvCurCond"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="Heavy rain"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvCurTemp" />
+
+                    <View
+                        android:id="@+id/dividerHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvCurCond" />
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="22dp"
+                        android:layout_marginTop="17dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/dividerHorizontal"
+                        app:layout_constraintHorizontal_chainStyle="spread_inside"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/ic_wind" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvWindSpeed"
+                                style="@style/TextAppearance.AppCompat.BaseText.RegularSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                tools:text="3.7 km/h" />
+
+                            <TextView
+                                style="@style/TextAppearance.AppCompat.BaseText.RegularSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/weather_wind_title" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="22dp"
+                        android:layout_marginTop="17dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintStart_toEndOf="@+id/linearLayout1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/dividerHorizontal"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/ic_humidity" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvHumidity"
+                                style="@style/TextAppearance.AppCompat.BaseText.RegularSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                tools:text="83%" />
+
+
+                            <TextView
+                                style="@style/TextAppearance.AppCompat.BaseText.RegularSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/weather_humidity_title" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="24dp"
+                        app:layout_constraintStart_toStartOf="@+id/linearLayout1"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout1"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/ic_pressure" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvPressure"
+                                style="@style/TextAppearance.AppCompat.BaseText.RegularSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                tools:text="1010 mbar" />
+
+                            <TextView
+                                style="@style/TextAppearance.AppCompat.BaseText.RegularSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/weather_pressure_title" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="24dp"
+                        app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/ic_chance_of_rain" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvPrecip"
+                                style="@style/TextAppearance.AppCompat.BaseText.RegularSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                tools:text="0 mm" />
+
+                            <TextView
+                                style="@style/TextAppearance.AppCompat.BaseText.RegularSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/weather_precipitation_title" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/blue"
+                android:paddingTop="8dp"
+                android:paddingHorizontal="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextAppearance.AppCompat.BaseText.SemiBold"
+                    android:id="@+id/tvHourlyTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Sunday | Nov 14" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:orientation="vertical"
+                    android:id="@+id/rvHourly"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:nestedScrollingEnabled="false"
+                    tools:listitem="@layout/item_hourly_weather"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/blue"
+                android:padding="16dp"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextAppearance.AppCompat.BaseText.Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/weather_daily_title"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvDaily"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:nestedScrollingEnabled="false"
+                    tools:listitem="@layout/item_daily_weather"/>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.loadingindicator.LoadingIndicator
+        android:id="@+id/loadingIndicator"
+        android:layout_width="48dp"
+        android:layout_height="38dp"
+        android:layout_gravity="center"
+        app:indicatorColor="@color/blue"
+        tools:indicatorColor="@color/black"
+        android:visibility="gone"/>
+
+    <TextView
+        style="@style/TextAppearance.AppCompat.BaseText.Medium"
+        android:id="@+id/tvError"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="20sp"
+        tools:text="An error occurred! :("
+        android:visibility="gone" />
+</FrameLayout>
