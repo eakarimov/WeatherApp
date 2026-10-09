@@ -1,25 +1,3 @@
 <resources>
     <string name="app_name">Weather</string>
-
-    <string name="error_network">Check your Internet connection.</string>
-    <string name="error_server">There is an error has occurred on the Server.</string>
-    <string name="error_unknown">There is an unexpected error has occurred.</string>
-
-    <string name="weather_wind_title">Wind</string>
-    <string name="weather_pressure_title">Pressure</string>
-    <string name="weather_precipitation_title">Precip</string>
-    <string name="weather_humidity_title">Humidity</string>
-
-    <string name="weather_wind_speed">%1$.1f km/h</string>
-    <string name="weather_pressure_value">%1$d mbar</string>
-    <string name="weather_precipitation_amount">%1$.2f mm</string>
-    <string name="weather_humidity_value">%1$d%%</string>
-
-    <string name="weather_rain_chance">%1$d%% rain</string>
-    <string name="weather_temperature_min_max">%1$d°/%2$d°</string>
-    <string name="weather_temperature">%1$d°</string>
-
-    <string name="weather_hourly_title">%1$s | %2$s</string>
-    <string name="weather_daily_title">Forecast for 3 Days</string>
-
 </resources>

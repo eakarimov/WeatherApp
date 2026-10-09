@@ -1,0 +1,22 @@
+<resources>
+    <string name="wind">Wind</string>
+    <string name="pressure">Pressure</string>
+    <string name="precip">Precip</string>
+    <string name="humidity">Humidity</string>
+
+    <string name="wind_value">%1$.1f km/h</string>
+    <string name="pressure_value">%1$d mbar</string>
+    <string name="precip_value">%1$.2f mm</string>
+    <string name="humidity_value">%1$d%%</string>
+
+    <string name="rain_value">%1$d%% rain</string>
+    <string name="temp_min_max_value">%1$d°/%2$d°</string>
+    <string name="temp_value">%1$d°</string>
+
+    <string name="hours">%1$s | %2$s</string>
+
+    <plurals name="days">
+        <item quantity="one">Forecast for %d Day</item>
+        <item quantity="other">Forecast for %d Days</item>
+    </plurals>
+</resources>
